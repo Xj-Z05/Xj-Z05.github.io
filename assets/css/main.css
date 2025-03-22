@@ -775,7 +775,7 @@ html {
 body {
   font-family: 'Lato', sans-serif;
   color: #515151;
-  background-color: #d5dcfa;
+  background-color: #e7e6de;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -930,10 +930,10 @@ table tfoot td {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 360px;
+  width: 240px;
   height: 100%;
   padding: 20px 10px;
-  background-color: #9691c9;
+  background-color: #d3e4fa;
 }
 
 .about {
