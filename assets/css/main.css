@@ -930,7 +930,7 @@ table tfoot td {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 240px;
+  width: 320px;
   height: 100%;
   padding: 20px 10px;
   background-color: #d3e4fa;
@@ -1002,7 +1002,7 @@ table tfoot td {
 
 .content-box {
   padding: 20px;
-  padding-left: 500px;
+  padding-left: 1000px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
