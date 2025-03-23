@@ -775,7 +775,7 @@ html {
 body {
   font-family: 'Lato', sans-serif;
   color: #515151;
-  background-color: #e7e6de;
+  background-color: #f5f5f0;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -889,7 +889,7 @@ table tfoot td {
 }
 
 .post, .article-page {
-  background-color: #c6c4df;
+  background-color: #fffff9;
 }
 
 ::-moz-selection {
@@ -933,7 +933,7 @@ table tfoot td {
   width: 320px;
   height: 100%;
   padding: 20px 10px;
-  background-color: #d3e4fa;
+  background-color: #d0e1f0;
 }
 
 .about {
