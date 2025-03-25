@@ -1023,7 +1023,7 @@ table tfoot td {
 
 .contact .contact-title {
   position: relative;
-  color: #333030;
+  color: #67625d;
   font-weight: 400;
   font-size: 12px;
   margin: 0 0 5px;
@@ -1035,30 +1035,30 @@ table tfoot td {
   content: "";
   display: block;
   height: 2px;
-  width: -webkit-calc(50% - 48px);
-  width: calc(50% - 48px);
+  width: -webkit-calc(50% - 40px);
+  width: calc(50% - 40px);
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   position: absolute;
   top: 50%;
   left: 0;
-  background-color: #515151;
+  background-color: #67625d;
 }
 
 .contact .contact-title::after {
   content: "";
   display: block;
   height: 2px;
-  width: -webkit-calc(50% - 48px);
-  width: calc(50% - 48px);
+  width: -webkit-calc(50% - 40px);
+  width: calc(50% - 40px);
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   position: absolute;
   top: 50%;
   right: 0;
-  background-color: #515151;
+  background-color: #67625d;
 }
 
 .contact ul {
@@ -1078,7 +1078,7 @@ table tfoot td {
 }
 
 .contact ul li a {
-  color: #515151;
+  color: #67625d;
   display: block;
   padding: 5px;
   font-size: 18px;
