@@ -6,22 +6,29 @@
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
-html {
+/*html {
   line-height: 1.15;
   /* 1 */
-  -ms-text-size-adjust: 100%;
+ /* -ms-text-size-adjust: 100%;*/
   /* 2 */
-  -webkit-text-size-adjust: 100%;
+  /*-webkit-text-size-adjust: 100%;
   /* 2 */
-}
+/*}
 
 /* Sections
    ========================================================================== */
 /**
  * Remove the margin in all browsers (opinionated).
  */
-body {
+/*body {
   margin: 0;
+}*/
+
+body, html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* 防止横向滚动 */
 }
 
 /**
