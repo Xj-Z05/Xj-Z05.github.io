@@ -1038,8 +1038,8 @@ table tfoot td {
   content: "";
   display: block;
   height: 2px;
-  width: -webkit-calc(50% - 60px);
-  width: calc(50% - 60px);
+  width: -webkit-calc(50% - 65px);
+  width: calc(50% - 65px);
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -1053,8 +1053,8 @@ table tfoot td {
   content: "";
   display: block;
   height: 2px;
-  width: -webkit-calc(50% - 60px);
-  width: calc(50% - 60px);
+  width: -webkit-calc(50% - 65px);
+  width: calc(50% - 65px);
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
