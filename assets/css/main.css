@@ -1004,8 +1004,10 @@ table tfoot td {
   padding: 20px;
   /*margin-left: 800px;*/
   margin-left: auto;  /* 关键改动：自动填充左侧空间 */
-  width: 800px;         /* 或固定宽度（如 600px） */
-  max-width: 900px;   /* 限制最大宽度避免拉伸 */
+  margin-right: auto;
+  width: 100%; 
+  /*width: 800px;*/         /* 或固定宽度（如 600px） */
+  max-width: 800px;   /* 限制最大宽度避免拉伸 */
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
