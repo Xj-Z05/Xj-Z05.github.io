@@ -920,20 +920,11 @@ table tfoot td {
 
 /* - - - - - - - - - - Home Page Styles - - - - - - - - - - */
 .rightsidebar {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
   position: fixed;
+  right: calc(100% - 100vw); /* 自动避开滚动条 */
   top: 0;
   right: 0;
   bottom: 0;
@@ -941,6 +932,7 @@ table tfoot td {
   height: 100%;
   padding: 20px 10px;
   background-color: #e9f5ff;
+  z-index: 10;
 }
 
 .sidebar {
