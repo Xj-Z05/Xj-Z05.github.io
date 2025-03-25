@@ -1003,26 +1003,25 @@ table tfoot td {
 .content-box {
   padding: 20px;
   /*margin-left: 800px;*/
-  margin-left: auto;  /* 关键改动：自动填充左侧空间 */
-  margin-right: auto;
-  width: 100%; 
+  margin: 0 auto;  /* 关键改动：自动填充左侧空间 */
+  width: 800px; 
   /*width: 800px;*/         /* 或固定宽度（如 600px） */
-  max-width: 800px;   /* 限制最大宽度避免拉伸 */
-  display: -webkit-box;
+  /*max-width: 800px;   /* 限制最大宽度避免拉伸 */
+ /* display: -webkit-box;
   display: -webkit-flex;
-  display: -ms-flexbox;
+  display: -ms-flexbox;*/
   display: flex;
-  -webkit-box-orient: horizontal;
+  /*-webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
-      -ms-flex-direction: row;
+      -ms-flex-direction: row;*/
           flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
+ /* -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;*/
           flex-wrap: wrap;
-  -webkit-box-align: stretch;
+  /*-webkit-box-align: stretch;
   -webkit-align-items: stretch;
-      -ms-flex-align: stretch;
+      -ms-flex-align: stretch;*/
           align-items: stretch;
 }
 
