@@ -23,6 +23,11 @@
 /*body {
   margin: 0;
 }*/
+.fredericka-the-great-regular {
+  font-family: "Fredericka the Great", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 body, html {
   width: 100%;
@@ -998,8 +1003,7 @@ table tfoot td {
 }
 
 .about .author-name {
-  font-family: 'frederickathegreat-regular', 'PT Serif', serif !important;
-  font-family: 'PT Serif', serif;
+  font-family: 'Fredericka the Great', 'PT Serif', serif !important;
   margin: 0 0 10px;
   position: relative;
   padding-bottom: 15px;
