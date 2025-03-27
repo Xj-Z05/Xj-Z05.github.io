@@ -5,6 +5,11 @@
   font-weight: 400; /* 普通字重 */
   font-style: normal;
 }
+:root {
+  --fa-font-solid: initial !important;
+  --fa-font-regular: initial !important;
+  --fa-font-brands: initial !important;
+}
 
 @import 'normalize';
 @import 'syntax';
@@ -19,7 +24,7 @@ html {
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: unset;
   color: $body-color;
   background-color: #fbfbfb;
   margin: 0;
