@@ -2,7 +2,7 @@
   font-family: 'frederickathegreat-regular';
   src: url('../assets/fonts/frederickathegreat-regular.woff2') format('woff2')
        url('../assets/fonts/frederickathegreat-regular.ttf') format('truetype');
-  font-display: block; /* 改为block强制等待字体加载 */
+  font-display: block !important; /* 改为block强制等待字体加载 */
   font-weight: 400;
   font-style: normal;
   unicode-range: U+0020-007F; /* 仅预加载基本拉丁字符 */
