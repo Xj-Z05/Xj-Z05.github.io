@@ -999,7 +999,7 @@ table tfoot td {
   font-size: 24px;
   text-transform: uppercase;
   color: #524539;
-  font-weight: 700;
+  font-weight: 400 !important;
 }
 
 .about .author-name::after {
