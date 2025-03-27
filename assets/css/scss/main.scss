@@ -1,19 +1,19 @@
 @font-face {
   font-family: 'FrederickatheGreat-Regular'; /* 名称必须完全一致 */
-  src: url('../assets/fonts/FrederickatheGreat-Regular.woff2') format('truetype');
+  src: url('../assets/fonts/FrederickatheGreat-Regular.woff2') format('woff2');
   font-display: swap;
   font-weight: 400; /* 普通字重 */
   font-style: normal;
-}
-:root {
-  --fa-font-solid: initial !important;
-  --fa-font-regular: initial !important;
-  --fa-font-brands: initial !important;
 }
 
 @import 'normalize';
 @import 'syntax';
 @import 'variables';
+:root {
+  --fa-font-solid: initial !important;
+  --fa-font-regular: initial !important;
+  --fa-font-brands: initial !important;
+}
 
 *, *::after, *::before {
   box-sizing: border-box;
