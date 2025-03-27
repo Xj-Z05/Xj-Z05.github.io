@@ -29,6 +29,12 @@
   font-style: normal;
 }
 
+.freckle-face-regular {
+  font-family: "Freckle Face", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .fascinate-inline-regular {
   font-family: "Fascinate Inline", system-ui;
   font-weight: 400;
@@ -1009,7 +1015,7 @@ table tfoot td {
 }
 
 .about .author-name {
-  font-family: 'Fascinate Inline', 'PT Serif', serif;
+  font-family: 'Freckle Face', 'PT Serif', serif;
   margin: 0 0 10px;
   position: relative;
   padding-bottom: 15px;
