@@ -12,3 +12,9 @@ $dark: #333030;
     font-display: swap;
   }
   $your-custom-font: 'frederickathegreat-regular', 'PT Serif', serif;
+  :root {
+    --fa-font-solid: initial !important;
+    --fa-font-regular: initial !important;
+    --fa-font-brands: initial !important;
+    --custom-font: 'frederickathegreat-regular', serif !important;
+  }
