@@ -1080,18 +1080,16 @@ table tfoot td {
 
 .navigation ul {
   margin: 0;
+  margin-top: -20px; 
   padding: 0;
   list-style: none;
   text-align: center;
 }
 
 .navigation ul li {
-  margin-left: 15px;
+  margin-left: 10px;
 }
 
-.navigation ul li:first-child {
-  margin-left: 0;
-}
 
 .navigation ul li a {
   display: block;
