@@ -47,6 +47,13 @@
   font-style: normal;
 }
 
+.onest-<uniquifier> {
+  font-family: "Onest", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
 
 body, html {
   width: 100%;
@@ -1242,14 +1249,14 @@ footer .copyright {
 }
 
 .post .post-content .post-title {
-  font-family: 'Basic', 'PT Serif', serif;
+  font-family: 'Onest', 'PT Serif', serif;
   margin: 0 0 10px;
   font-size: 30px;
   font-weight: 400;
 }
 
 .post .post-content .post-title a {
-  font-family: 'Basic', 'PT Serif', serif;
+  font-family: 'Onest', 'PT Serif', serif;
   text-decoration: none;
   color: #263959;
 }
