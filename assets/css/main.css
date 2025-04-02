@@ -29,12 +29,6 @@
   font-style: normal;
 }
 
-.freckle-face-regular {
-  font-family: "Freckle Face", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-
 .fascinate-inline-regular {
   font-family: "Fascinate Inline", system-ui;
   font-weight: 400;
@@ -50,6 +44,13 @@
 .noticia-text-bold {
   font-family: "Noticia Text", serif;
   font-weight: 700;
+  font-style: normal;
+}
+
+.vollkorn-posttitle {
+  font-family: "Vollkorn", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
   font-style: normal;
 }
 
@@ -1248,15 +1249,15 @@ footer .copyright {
 }
 
 .post .post-content .post-title {
-  font-family: 'Noticia Text', 'PT Serif', serif !important;
+  font-family: 'Vollkorn', 'PT Serif', serif !important;
   margin: 0 0 10px;
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .post .post-content .post-title a {
-  font-family: 'Noticia Text', 'PT Serif', serif !important;
-  font-weight: 700;
+  font-family: 'Vollkorn', 'PT Serif', serif !important;
+  font-weight: 900;
   text-decoration: none;
   color: #263959;
 }
