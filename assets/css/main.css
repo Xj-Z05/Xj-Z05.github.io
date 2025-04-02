@@ -1252,12 +1252,12 @@ footer .copyright {
   font-family: 'Vollkorn', 'PT Serif', serif ;
   margin: 0 0 10px;
   font-size: 30px;
-  font-weight: 900 !important;
+  font-weight: 700;
 }
 
 .post .post-content .post-title a {
   font-family: 'Vollkorn', 'PT Serif', serif ;
-  font-weight: 900 !important;
+  font-weight: 700;
   text-decoration: none;
   color: #263959;
 }
