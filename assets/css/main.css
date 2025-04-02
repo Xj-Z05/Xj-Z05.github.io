@@ -47,16 +47,9 @@
   font-style: normal;
 }
 
-.noticia-text-regular {
+.noticia-text-bold {
   font-family: "Noticia Text", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.onest-<uniquifier> {
-  font-family: "Onest", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: 700;
   font-style: normal;
 }
 
