@@ -1249,15 +1249,15 @@ footer .copyright {
 }
 
 .post .post-content .post-title {
-  font-family: 'Vollkorn', 'PT Serif', serif !important;
+  font-family: 'Vollkorn', 'PT Serif', serif ;
   margin: 0 0 10px;
   font-size: 30px;
-  font-weight: 900;
+  font-weight: 900 !important;
 }
 
 .post .post-content .post-title a {
-  font-family: 'Vollkorn', 'PT Serif', serif !important;
-  font-weight: 900;
+  font-family: 'Vollkorn', 'PT Serif', serif ;
+  font-weight: 900 !important;
   text-decoration: none;
   color: #263959;
 }
