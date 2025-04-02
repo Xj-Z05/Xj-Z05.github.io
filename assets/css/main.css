@@ -1251,11 +1251,12 @@ footer .copyright {
   font-family: 'Noticia Text', 'PT Serif', serif !important;
   margin: 0 0 10px;
   font-size: 30px;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .post .post-content .post-title a {
   font-family: 'Noticia Text', 'PT Serif', serif !important;
+  font-weight: 700;
   text-decoration: none;
   color: #263959;
 }
