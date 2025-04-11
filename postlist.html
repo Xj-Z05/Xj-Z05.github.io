@@ -1,6 +1,27 @@
 ---
-layout: default
+layout: default 
+title: "文章列表" 
+permalink: /posts/ 
 ---
+
+<!-- 主内容区（与首页 content-box 同样式） -->
 <div class="content-box clearfix">
-    {{ content }} 
+  <h1 class="page-title">{{ page.title }}</h1>  <!-- 显示页面标题 -->
+
+  <!-- 文章列表循环 -->
+  {% for post in site.posts %}
+    <article class="post-preview">
+      <h2>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>  <!-- 文章标题链接 -->
+      </h2>
+      <div class="post-excerpt">
+        {{ post.excerpt | default: post.content | strip_html | truncate: 150 }}  <!-- 摘要 -->
+      </div>
+      <div class="post-meta">
+        <span class="post-date">{{ post.date | date: "%Y, %b %d" }}</span>
+        <!-- 可选：其他元数据（如分类/标签） -->
+      </div>
+    </article>
+    {% unless forloop.last %}<hr class="post-divider">{% endunless %}  <!-- 分隔线 -->
+  {% endfor %}
 </div>
