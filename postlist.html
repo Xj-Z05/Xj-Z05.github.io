@@ -1,7 +1,19 @@
 ---
 layout: default
-title: "测试页"
+title: "文章列表"
+permalink: /posts/  # 或删除此行用默认路径
 ---
 
-<h1>Hello World</h1>
-<p>如果看到此内容，说明页面能正常渲染。</p>
+<div class="content-box clearfix">
+  <h1>{{ page.title }}</h1>
+  
+  <!-- 调试：显示文章数量 -->
+  <p>检测到 {{ site.posts | size }} 篇文章</p>
+
+  {% for post in site.posts %}
+    <div class="post-item">
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <p>{{ post.date | date: "%Y-%m-%d" }}</p>
+    </div>
+  {% endfor %}
+</div>
