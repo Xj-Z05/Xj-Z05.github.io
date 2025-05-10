@@ -1,0 +1,134 @@
+---
+layout: default
+---
+
+
+<aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="{{site.baseurl}}/"><img src="{{site.baseurl}}/assets/img/{% if site.author-img %}{{site.author-img}}{% endif %}" alt="{{site.author}}"></a>
+      </div>
+      <div class="author-name">{{site.author}}</div>
+      <p>{{site.about-author}}</p>
+    </div>
+  </header> <!-- End Header -->
+  <nav class="navigation">
+    <ul>
+      <li><a href="{{ site.baseurl }}/">  <!-- 兼容项目子路径 --><i class="fa-solid fa-house" style="color: #a19a91;" aria-hidden="true"></i></a></li>
+      <li><a href=""><i class="fa-solid fa-list" style="color: #b3aca2;" aria-hidden="true"></i></a></li>
+      <li><a href=""><i class="fa-solid fa-file" style="color: #c3bbb2;" aria-hidden="true"></i></a></li>
+      <li><a href=""><i class="fa-solid fa-file" style="color: #d2ccc3;" aria-hidden="true"></i></a></li>
+    </ul>
+  </nav>
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">MORE INFORMATION</h3>
+      <ul>
+        {% if site.social-artstation %}
+          <li><a href="https://artstation.com/{{ site.social-artstation }}" target="_blank"><i class="fa-brands fa-artstation" aria-hidden="true" title="Artstation"></i></a></li>
+        {% else %}
+          <li><a href="https://www.artstation.com/l-x" target="_blank"><i class="fa-brands fa-artstation" aria-hidden="true" title="Artstation"></i></a></li>
+        {% endif %}
+        {% if site.social-bilibili %}
+          <li><a href="https://bilibili.com/{{ site.social-bilibili }}" target="_blank"><i class="fa-brands fa-bilibili" aria-hidden="true" title="bilibili"></i></a></li>
+        {% else %}
+          <li><a href="https://space.bilibili.com/4978651" target="_blank"><i class="fa-brands fa-bilibili" aria-hidden="true" title="bilibili"></i></a></li>
+        {% endif %}
+        {% if site.social-github %}
+          <li class="github"><a href="http://github.com/{{site.social-github}}" target="_blank"><i class="fa-brands fa-github" title="github"></i></a></li>
+        {% else %}
+          <li class="github"><a href="http://github.com/HazelL0923" target="_blank"><i class="fa-brands fa-github" aria-hidden="true" title="github"></i></a></li>
+        {% endif %}
+        {% if site.social-linkedin %}
+          <li class="linkedin"><a href="https://in.linkedin.com/in/{{site.social-linkedin}}" target="_blank"><i class="fa-brands fa-linkedin" title="linkedin"></i></a></li>
+        {% else %}
+          <li class="linkedin"><a href="https://in.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin" aria-hidden="true" title="linkedin"></i></a></li>
+        {% endif %}
+        {% if site.social-email %}
+          <li class="email"><a href="mailto:{{site.social-email}}"><i class="fa-solid fa-envelope" title="email"></i></a></li>
+        {% else %}
+          <li class="email"><a href="mailto:example.david@blog.com"><i class="fa-solid fa-envelope" aria-hidden="true" title="email"></i></a></li>
+        {% endif %}
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>{{site.time | date: '%Y'}} &copy; {{site.author}}</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <div class="blog-post">
+    <div class="post-image">
+      <img src="/assets/img/avatar.png" alt="Post 1">
+    </div>
+    <div class="post-info">
+      <h2 class="post-title"><a href="/index copy.html">I Rest From Work</a> </h2>
+      <p class="post-excerpt">Fam locavore snackwave bushwick +1 sartorial. Selfies portland kausgaard synth. Pop-up art party mafa deep...</p>
+      <p class="post-date">2017, Sep 12 — 4 minute read</p>
+    </div>
+  </div>
+  <div class="blog-post">
+    <div class="post-image">
+      <img src="image2.jpg" alt="Post 2">
+    </div>
+    <div class="post-info">
+      <h2 class="post-title">The Best Organizer Software</h2>
+      <p class="post-excerpt">Church-key blog messenger bag, selfies umami man braid mikkok. Pork belly cornhole meditation tumblr meh...</p>
+      <p class="post-date">2017, Sep 11 — 3 minute read</p>
+    </div>
+  </div>
+  <div class="blog-post">
+    <div class="post-image">
+      <img src="image3.jpg" alt="Post 3">
+    </div>
+    <div class="post-info">
+      <h2 class="post-title">How To Start Programming</h2>
+      <p class="post-excerpt">Post-ironic jean shorts bushwick umami, synth beard austin hell of meh kitsch distillery sustainable plaid...</p>
+      <p class="post-date">2017, Sep 13 — 3 minute read</p>
+    </div>
+  </div>
+  <div class="blog-post">
+    <div class="post-image">
+      <img src="image4.jpg" alt="Post 4">
+    </div>
+    <div class="post-info">
+      <h2 class="post-title">10 Tips To Improve Your Workflow</h2>
+      <p class="post-excerpt">Asymmetrical portland enamel pin af heirloom ramps authentic thundercats. Synth truffaut schlitz aesthetic, palo santo...</p>
+      <p class="post-date">2017, Sep 11 — 5 minute read</p>
+    </div>
+  </div>
+  <div class="blog-post">
+    <div class="post-image">
+      <img src="image5.jpg" alt="Post 5">
+    </div>
+    <div class="post-info">
+      <h2 class="post-title">Conference on Javascript</h2>
+      <p class="post-excerpt">Jean shorts organic cornhole, grodjugal post-ironic cherchurche authetic flexitarian viral PBR&B forage wolf. Man braid...</p>
+      <p class="post-date">2017, Sep 09 — 2 minute read</p>
+    </div>
+  </div>
+  <!-- 4444 -->
+  <a href="{{ site.baseurl }}/postlist.html" class="content-box-link">
+    {{ content }}  <!-- 点击整个区域跳转到 postlist.html -->
+  </a>
+  <!--{{ content }}-->
+</div>
+<aside class="rightsidebar">
+  <div class="sideb">
+    <h3>Recently Updated</h3>
+    <ul class="recent-updates">
+      <li><a href="#">Writing a New Post</a></li>
+      <li><a href="#" class="active">Getting Started</a></li>
+      <li><a href="#">Text and Typography</a></li>
+      <li><a href="#">Customize the Favicon</a></li>
+    </ul>
+    <h3>Trending Tags</h3>
+    <div class="trending-tags">
+      <span class="tag">favicon</span>
+      <span class="tag">getting started</span>
+      <span class="tag">typography</span>
+      <span class="tag">writing</span>
+    </div>
+  </div>
+</aside>
