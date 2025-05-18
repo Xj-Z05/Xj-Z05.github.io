@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知识探索 | 个人博客</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6', // 蓝色作为主色调，表示专业和信任
+            secondary: '#F97316', // 橙色作为辅助色，提供视觉对比
+            dark: '#1E293B',
+            light: '#F8FAFC',
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .sidebar-link {
+        @apply flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary;
+      }
+      .sidebar-link.active {
+        @apply bg-primary/10 text-primary font-medium;
+      }
+      .article-card {
+        @apply bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md;
+      }
+      .tag-badge {
+        @apply inline-block px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 hover:bg-primary/20;
+      }
+      .btn {
+        @apply px-4 py-2 rounded-lg font-medium transition-all duration-300;
+      }
+      .btn-primary {
+        @apply bg-primary text-white hover:bg-primary/90;
+      }
+      .btn-outline {
+        @apply border border-primary text-primary hover:bg-primary/10;
+      }
+    }
+  </style>
+</head>
+<body class="font-inter bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+  <!-- 页面容器 -->
+  <div class="flex flex-1 overflow-hidden">
+    <!-- 左侧边栏 - 全站通用 -->
+    <aside class="w-64 bg-white shadow-md border-r border-gray-200 flex-shrink-0 hidden md:block transition-all duration-300">
+      <div class="p-6 text-center border-b border-gray-100">
+        <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-4 border-primary/20 shadow-md">
+          <img src="https://picsum.photos/200/200" alt="博主头像" class="w-full h-full object-cover">
+        </div>
+        <h2 class="mt-4 text-xl font-bold">知识探索者</h2>
+        <p class="mt-1 text-sm text-gray-500">分享技术与思考</p>
+      </div>
+      
+      <nav class="py-4">
+        <ul>
+          <li>
+            <a href="index.html" class="sidebar-link active">
+              <i class="fa fa-home text-lg"></i>
+              <span>首页</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="sidebar-link">
+              <i class="fa fa-book text-lg"></i>
+              <span>文章归档</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="sidebar-link">
+              <i class="fa fa-tags text-lg"></i>
+              <span>标签云</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="sidebar-link">
+              <i class="fa fa-calendar text-lg"></i>
+              <span>时间轴</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="sidebar-link">
+              <i class="fa fa-user text-lg"></i>
+              <span>关于我</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="mt-auto p-6 border-t border-gray-100">
+        <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">关注我</h3>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 移动端菜单按钮 -->
+    <button id="mobile-menu-button" class="fixed bottom-6 right-6 w-12 h-12 bg-primary rounded-full shadow-lg flex items-center justify-center text-white md:hidden z-50">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- 移动端侧边栏 -->
+    <div id="mobile-sidebar" class="fixed inset-0 bg-black/50 z-40 transform translate-x-full transition-transform duration-300 md:hidden">
+      <div class="bg-white h-full w-64 shadow-lg overflow-y-auto">
+        <!-- 移动端侧边栏内容与桌面端相同 -->
+        <!-- 复制桌面侧边栏内容到这里 -->
+        <div class="p-6 text-center border-b border-gray-100">
+          <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-4 border-primary/20 shadow-md">
+            <img src="https://picsum.photos/200/200" alt="博主头像" class="w-full h-full object-cover">
+          </div>
+          <h2 class="mt-4 text-xl font-bold">知识探索者</h2>
+          <p class="mt-1 text-sm text-gray-500">分享技术与思考</p>
+        </div>
+        
+        <nav class="py-4">
+          <ul>
+            <li>
+              <a href="index.html" class="sidebar-link active">
+                <i class="fa fa-home text-lg"></i>
+                <span>首页</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="sidebar-link">
+                <i class="fa fa-book text-lg"></i>
+                <span>文章归档</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="sidebar-link">
+                <i class="fa fa-tags text-lg"></i>
+                <span>标签云</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="sidebar-link">
+                <i class="fa fa-calendar text-lg"></i>
+                <span>时间轴</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="sidebar-link">
+                <i class="fa fa-user text-lg"></i>
+                <span>关于我</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        
+        <div class="mt-auto p-6 border-t border-gray-100">
+          <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">关注我</h3>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <main class="flex-1 overflow-y-auto bg-gray-50 p-4 md:p-6 lg:p-8">
+      <div class="max-w-7xl mx-auto">
+        <!-- 首页内容 -->
+        <div id="home-page" class="space-y-8">
+          <div class="text-center mb-8">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-gray-900 leading-tight">探索知识的边界</h1>
+            <p class="mt-4 text-gray-600 max-w-2xl mx-auto text-[clamp(1rem,2vw,1.25rem)]">分享技术、思考与创意的个人博客</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 分类卡片 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md group">
+              <div class="h-48 overflow-hidden">
+                <img src="https://picsum.photos/800/400?random=1" alt="技术文章" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">技术文章</h3>
+                <p class="text-gray-600 mb-4">深入探讨编程、前端开发、后端架构等技术话题</p>
+                <a href="category.html" class="inline-flex items-center text-primary font-medium hover:underline">
+                  查看文章 <i class="fa fa-arrow-right ml-2 text-sm"></i>
+                </a>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md group">
+              <div class="h-48 overflow-hidden">
+                <img src="https://picsum.photos/800/400?random=2" alt="思考笔记" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">思考笔记</h3>
+                <p class="text-gray-600 mb-4">记录学习过程中的思考、总结与感悟</p>
+                <a href="category.html" class="inline-flex items-center text-primary font-medium hover:underline">
+                  查看文章 <i class="fa fa-arrow-right ml-2 text-sm"></i>
+                </a>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md group">
+              <div class="h-48 overflow-hidden">
+                <img src="https://picsum.photos/800/400?random=3" alt="创意分享" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">创意分享</h3>
+                <p class="text-gray-600 mb-4">分享设计、创意项目和技术实现的新思路</p>
+                <a href="category.html" class="inline-flex items-center text-primary font-medium hover:underline">
+                  查看文章 <i class="fa fa-arrow-right ml-2 text-sm"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+              <i class="fa fa-fire text-secondary mr-2"></i> 最新文章
+            </h2>
+            
+            <div class="space-y-6">
+              <!-- 文章列表项 -->
+              <article class="article-card flex flex-col md:flex-row">
+                <div class="md:w-1/3 h-48 md:h-auto overflow-hidden">
+                  <img src="https://picsum.photos/800/400?random=10" alt="文章封面" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                </div>
+                <div class="p-6 md:w-2/3">
+                  <div class="flex items-center text-sm text-gray-500 mb-3">
+                    <span class="mr-4"><i class="fa fa-calendar-o mr-1"></i> 2023-05-15</span>
+                    <span class="mr-4"><i class="fa fa-folder-o mr-1"></i> 技术</span>
+                    <span><i class="fa fa-eye mr-1"></i> 1,245</span>
+                  </div>
+                  <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors duration-300">
+                    <a href="article.html">现代前端框架对比：React、Vue和Angular</a>
+                  </h3>
+                  <p class="text-gray-600 mb-4 line-clamp-3">本文深入对比了三大主流前端框架的优缺点、适用场景和性能表现，帮助开发者在项目选型时做出更明智的决策...</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <a href="tag.html?tag=前端" class="tag-badge bg-primary/10 text-primary">#前端</a>
+                    <a href="tag.html?tag=React" class="tag-badge bg-gray-100 text-gray-700">#React</a>
+                    <a href="tag.html?tag=Vue" class="tag-badge bg-gray-100 text-gray-700">#Vue</a>
+                  </div>
+                  <a href="article.html" class="btn btn-outline inline-flex items-center">
+                    阅读全文 <i class="fa fa-long-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </article>
+              
+              <article class="article-card flex flex-col md:flex-row">
+                <div class="md:w-1/3 h-48 md:h-auto overflow-hidden">
+                  <img src="https://picsum.photos/800/400?random=11" alt="文章封面" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                </div>
+                <div class="p-6 md:w-2/3">
+                  <div class="flex items-center text-sm text-gray-500 mb-3">
+                    <span class="mr-4"><i class="fa fa-calendar-o mr-1"></i> 2023-05-10</span>
+                    <span class="mr-4"><i class="fa fa-folder-o mr-1"></i> 思考</span>
+                    <span><i class="fa fa-eye mr-1"></i> 987</span>
+                  </div>
+                  <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors duration-300">
+                    <a href="article.html">程序员如何保持学习动力与技术热情</a>
+                  </h3>
+                  <p class="text-gray-600 mb-4 line-clamp-3">在快速变化的技术领域，程序员如何持续学习并保持对技术的热情？本文分享了一些个人经验和实用方法...</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <a href="tag.html?tag=学习方法" class="tag-badge bg-primary/10 text-primary">#学习方法</a>
+                    <a href="tag.html?tag=职业发展" class="tag-badge bg-gray-100 text-gray-700">#职业发展</a>
+                  </div>
+                  <a href="article.html" class="btn btn-outline inline-flex items-center">
+                    阅读全文 <i class="fa fa-long-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </article>
+              
+              <article class="article-card flex flex-col md:flex-row">
+                <div class="md:w-1/3 h-48 md:h-auto overflow-hidden">
+                  <img src="https://picsum.photos/800/400?random=12" alt="文章封面" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                </div>
+                <div class="p-6 md:w-2/3">
+                  <div class="flex items-center text-sm text-gray-500 mb-3">
+                    <span class="mr-4"><i class="fa fa-calendar-o mr-1"></i> 2023-05-05</span>
+                    <span class="mr-4"><i class="fa fa-folder-o mr-1"></i> 创意</span>
+                    <span><i class="fa fa-eye mr-1"></i> 762</span>
+                  </div>
+                  <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors duration-300">
+                    <a href="article.html">打造个性化代码编辑器：从插件到主题定制</a>
+                  </h3>
+                  <p class="text-gray-600 mb-4 line-clamp-3">一个舒适且高效的开发环境对程序员至关重要。本文将分享如何根据个人习惯和项目需求，定制专属的代码编辑器...</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <a href="tag.html?tag=工具" class="tag-badge bg-primary/10 text-primary">#工具</a>
+                    <a href="tag.html?tag=开发环境" class="tag-badge bg-gray-100 text-gray-700">#开发环境</a>
+                  </div>
+                  <a href="article.html" class="btn btn-outline inline-flex items-center">
+                    阅读全文 <i class="fa fa-long-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+            
+            <div class="mt-8 text-center">
+              <button class="btn btn-primary">
+                加载更多文章 <i class="fa fa-refresh ml-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 分类页面内容 (默认隐藏) -->
+        <div id="category-page" class="hidden space-y-8">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-2xl font-bold flex items-center">
+                <i class="fa fa-folder-open text-secondary mr-2"></i> 技术文章
+              </h2>
+              <div class="flex items-center">
+                <span class="text-sm text-gray-500 mr-2">排序：</span>
+                <select class="text-sm border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-primary/20">
+                  <option>最新发布</option>
+                  <option>最多阅读</option>
+                  <option>评论最多</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="space-y-6">
+              <!-- 分类文章列表项 - 简化版 -->
+              <article class="article-card p-5">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span class="mr-4"><i class="fa fa-calendar-o mr-1"></i> 2023-05-15</span>
+                  <span><i class="fa fa-eye mr-1"></i> 1,245</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors duration-300">
+                  <a href="article.html">现代前端框架对比：React、Vue和Angular</a>
+                </h3>
+                <p class="text-gray-600 mb-4 line-clamp-2">本文深入对比了三大主流前端框架的优缺点、适用场景和性能表现，帮助开发者在项目选型时做出更明智的决策...</p>
+                <div class="flex flex-wrap gap-2">
+                  <a href="tag.html?tag=前端" class="tag-badge bg-primary/10 text-primary">#前端</a>
+                  <a href="tag.html?tag=React" class="tag-badge bg-gray-100 text-gray-700">#React</a>
+                  <a href="tag.html?tag=Vue" class="tag-badge bg-gray-100 text-gray-700">#Vue</a>
+                </div>
+              </article>
+              
+              <article class="article-card p-5">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span class="mr-4"><i class="fa fa-calendar-o mr-1"></i> 2023-05-08</span>
+                  <span><i class="fa fa-eye mr-1"></i> 876</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors duration-300">
+                  <a href="article.html">Web性能优化实战：从理论到实践</a>
+                </h3>
+                <p class="text-gray-600 mb-4 line-clamp-2">本文从性能指标、优化策略到具体实现方法，全面介绍了Web前端性能优化的最佳实践...</p>
+                <div class="flex flex-wrap gap-2">
+                  <a href="tag.html?tag=性能优化" class="tag-badge bg-primary/10 text-primary">#性能优化</a>
+                  <a href="tag.html?tag=Web" class="tag-badge bg-gray-100 text-gray-700">#Web</a>
+                </div>
+              </article>
+              
+              <article class="article-card p-5">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span class="mr-4"><i class="fa fa-calendar-o mr-1"></i> 2023-05-01</span>
+                  <span><i class="fa fa-eye mr-1"></i> 654</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors duration-300">
+                  <a href="article.html">TypeScript高级类型与实用技巧</a>
+                </h3>
+                <p class="text-gray-600 mb-4 line-clamp-2">深入探讨TypeScript的高级类型特性，包括映射类型、条件类型、模板字面量类型等，以及在实际项目中的应用技巧...</p>
+                <div class="flex flex-wrap gap-2">
+                  <a href="tag.html?tag=TypeScript" class="tag-badge bg-primary/10 text-primary">#TypeScript</a>
+                  <a href="tag.html?tag=JavaScript" class="tag-badge bg-gray-100 text-gray-700">#JavaScript</a>
+                </div>
+              </article>
+              
+              <article class="article-card p-5">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span class="mr-4"><i class="fa fa-calendar-o mr-1"></i> 2023-04-25</span>
+                  <span><i class="fa fa-eye mr-1"></i> 543</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors duration-300">
+                  <a href="article.html">微前端架构实践与思考</a>
+                </h3>
+                <p class="text-gray-600 mb-4 line-clamp-2">随着前端应用规模不断扩大，微前端架构逐渐成为解决复杂应用的有效方案。本文分享微前端架构的实践经验和思考...</p>
+                <div class="flex flex-wrap gap-2">
+                  <a href="tag.html?tag=微前端" class="tag-badge bg-primary/10 text-primary">#微前端</a>
+                  <a href="tag.html?tag=架构" class="tag-badge bg-gray-100 text-gray-700">#架构</a>
+                </div>
+              </article>
+            </div>
+            
+            <!-- 分页控件 -->
+            <div class="mt-8 flex justify-center">
+              <nav class="inline-flex rounded-md shadow-sm">
+                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                  <span class="sr-only">上一页</span>
+                  <i class="fa fa-chevron-left"></i>
+                </a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-primary text-sm font-medium text-white">
+                  1
+                </a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                  2
+                </a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                  3
+                </a>
+                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+                  ...
+                </span>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                  8
+                </a>
+                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                  <span class="sr-only">下一页</span>
+                  <i class="fa fa-chevron-right"></i>
+                </a>
+              </nav>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 文章页面内容 (默认隐藏) -->
+        <div id="article-page" class="hidden space-y-8">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
+            <article>
+              <header class="mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4">现代前端框架对比：React、Vue和Angular</h1>
+                <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6">
+                  <div class="flex items-center">
+                    <img src="https://picsum.photos/50/50" alt="作者头像" class="w-10 h-10 rounded-full mr-2">
+                    <span>知识探索者</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fa fa-calendar-o mr-1"></i>
+                    <span>2023-05-15</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fa fa-folder-o mr-1"></i>
+                    <span>技术</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fa fa-eye mr-1"></i>
+                    <span>1,245</span>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fa fa-comment-o mr-1"></i>
+                    <span>23</span>
+                  </div>
+                </div>
+                <div class="h-1 w-full bg-gray-100 rounded-full mb-6"></div>
+              </header>
+              
+              <div class="prose max-w-none">
+                <p class="lead text-lg text-gray-700 mb-6">随着Web开发的不断发展，前端框架层出不穷。其中，React、Vue和Angular是目前最流行的三大框架。本文将深入对比它们的特点、适用场景和性能表现，帮助开发者在项目选型时做出更明智的决策。</p>
+                
+                <img src="https://picsum.photos/1200/600?random=20" alt="前端框架对比" class="w-full h-auto rounded-lg mb-8 shadow-sm">
+                
+                <h2 class="text-2xl font-bold mt-8 mb-4">1. 框架概述</h2>
+                
+                <p>React、Vue和Angular是目前前端开发领域最具影响力的三个框架，它们各自有着独特的设计理念和应用场景。</p>
+                
+                <h3 class="text-xl font-bold mt-6 mb-3">1.1 React</h3>
+                
+                <p>React是由Facebook开发和维护的JavaScript库，它采用虚拟DOM和组件化的思想，使UI开发变得高效和可维护。React本身只关注视图层，但生态系统非常丰富，配合Redux、React Router等库可以构建复杂的大型应用。</p>
+                
+                <pre class="bg-gray-800 text-white p-4 rounded-lg my-6 overflow-x-auto">
+                  <code>
+// React组件示例
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+                  </code>
+                </pre>
+                
+                <h3 class="text-xl font-bold mt-6 mb-3">1.2 Vue</h3>
+                
+                <p>Vue是由尤雨溪开发的渐进式JavaScript框架，它结合了React的虚拟DOM和Angular的数据绑定等优点，并且具有简洁的API和良好的文档。Vue的学习曲线平缓，适合初学者快速上手，同时也能满足复杂大型应用的开发需求。</p>
+                
+                <pre class="bg-gray-800 text-white p-4 rounded-lg my-6 overflow-x-auto">
+                  <code>
+<!-- Vue组件示例 -->
+<template>
+  <div>
+    <p>You clicked {{ count }} times</p>
+    <button @click="increment">Click me</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      count: 0
+    }
+  },
+  methods: {
+    increment() {
+      this.count++
+    }
+  }
+}
+</script>
+                  </code>
+                </pre>
+                
+                <h3 class="text-xl font-bold mt-6 mb-3">1.3 Angular</h3>
+                
+                <p>Angular是由Google开发和维护的完整框架，它提供了一套全面的解决方案，包括路由、表单验证、依赖注入等。Angular采用TypeScript作为主要开发语言，强制使用特定的架构模式，适合大型团队协作开发复杂应用。</p>
+                
+                <pre class="bg-gray-800 text-white p-4 rounded-lg my-6 overflow-x-auto">
+                  <code>
+// Angular组件示例
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-counter',
+  templateUrl: './counter.component.html',
+  styleUrls: ['./counter.component.css']
+})
+export class CounterComponent {
+  count = 0;
+  
+  increment() {
+    this.count++;
+  }
+}
+                  </code>
+                </pre>
+                
+                <h2 class="text-2xl font-bold mt-8 mb-4">2. 性能对比</h2>
+                
+                <p>在性能方面，三大框架都有各自的优化策略，但在不同场景下表现略有差异。</p>
+                
+                <h3 class="text-xl font-bold mt-6 mb-3">2.1 虚拟DOM性能</h3>
+                
+                <p>React和Vue都使用虚拟DOM来提高渲染效率，而Angular则使用脏检查机制。在大规模数据渲染场景下，React和Vue的虚拟DOM通常表现更好。</p>
+                
+                <h3 class="text-xl font-bold mt-6 mb-3">2.2 初始加载时间</h3>
+                
+                <p>Vue的体积较小，初始加载时间通常较短，而Angular由于包含了完整的框架，体积较大，初始加载时间相对较长。</p>
+                
+                <h3 class="text-xl font-bold mt-6 mb-3">2.3 响应式更新</h3>
+                
+                <p>Vue的响应式系统基于Object.defineProperty()，而React依赖于setState()触发更新。在复杂数据更新场景下，两者表现各有优劣。</p>
+                
+                <h2 class="text-2xl font-bold mt-8 mb-4">3. 生态系统与社区支持</h2>
+                
+                <p>一个框架的生态系统和社区支持对于开发者来说非常重要，它直接影响开发效率和问题解决能力。</p>
+                
+                <h3 class="text-xl font-bold mt-6 mb-3">3.1 学习资源</h3>
+                
+                <p>三大框架都有丰富的学习资源，但React由于出现时间较长，社区更加成熟，学习资源也更加丰富。</p>
+                
+                <h3 class="text-xl font-bold mt-6 mb-3">3.2 第三方库</h3>
+                
+                <p>React的生态系统最为庞大，有大量的第三方库和工具可供选择。Vue的生态系统也在快速发展，而Angular则由于其自身提供了较为完整的解决方案，第三方库相对较少。</p>
+                
+                <h3 class="text-xl font-bold mt-6 mb-3">3.3 就业市场</h3>
+                
+                <p>在就业市场上，React的需求最为广泛，Vue的需求也在快速增长，而Angular则在大型企业中仍然有一定的市场份额。</p>
+                
+                <h2 class="text-2xl font-bold mt-8 mb-4">4. 适用场景</h2>
+                
+                <p>根据项目规模、团队经验和性能要求等因素，选择合适的框架至关重要。</p>
+                
+                <ul class="list-disc pl-6 my-6 space-y-2">
+                  <li><strong>React</strong>：适合大型应用、复杂交互和需要强大生态系统支持的项目。</li>
+                  <li><strong>Vue</strong>：适合快速迭代的中小型项目、初学者友好的项目，以及需要良好中文社区支持的项目。</li>
+                  <li><strong>Angular</strong>：适合大型企业级应用、需要严格架构规范和TypeScript支持的项目。</li>
+                </ul>
+                
+                <h2 class="text-2xl font-bold mt-8 mb-4">5. 总结</h2>
+                
+                <p>选择React、Vue还是Angular，取决于项目需求、团队技术栈和个人偏好。每个框架都有其独特的优势和适用场景，开发者应根据具体情况做出选择。无论选择哪个框架，最重要的是能够高效地开发出高质量的产品。</p>
+                
+                <div class="bg-blue-50 border-l-4 border-primary p-4 my-8 rounded-r-lg">
+                  <h3 class="font-bold text-primary mb-2">参考资料</h3>
+                  <ul class="space-y-1">
+                    <li><a href="#" class="text-primary hover:underline">React官方文档</a></li>
+                    <li><a href="#" class="text-primary hover:underline">Vue官方文档</a></li>
+                    <li><a href="#" class="text-primary hover:underline">Angular官方文档</a></li>
+                    <li><a href="#" class="text-primary hover:underline">2023前端框架趋势报告</a></li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="mt-10 pt-6 border-t border-gray-100">
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-gray-500 font-medium">标签：</span>
+                  <a href="tag.html?tag=前端" class="tag-badge bg-primary/10 text-primary">#前端</a>
+                  <a href="tag.html?tag=React" class="tag-badge bg-gray-100 text-gray-700">#React</a>
+                  <a href="tag.html?tag=Vue" class="tag-badge bg-gray-100 text-gray-700">#Vue</a>
+                  <a href="tag.html?tag=Angular" class="tag-badge bg-gray-100 text-gray-700">#Angular</a>
+                </div>
+                
+                <div class="flex justify-between items-center">
+                  <div class="flex items-center">
+                    <button class="flex items-center text-gray-500 hover:text-primary transition-colors duration-300">
+                      <i class="fa fa-thumbs-up mr-2"></i>
+                      <span>喜欢 (42)</span>
+                    </button>
+                    <button class="ml-6 flex items-center text-gray-500 hover:text-primary transition-colors duration-300">
+                      <i class="fa fa-bookmark-o mr-2"></i>
+                      <span>收藏</span>
+                    </button>
+                  </div>
+                  <div class="flex items-center">
+                    <span class="text-gray-500 mr-3">分享：</span>
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-500 hover:text-white transition-all duration-300">
+                      <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-400 hover:text-white transition-all duration-300">
+                      <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-red-500 hover:text-white transition-all duration-300">
+                      <i class="fa-brands fa-reddit"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-700 hover:text-white transition-all duration-300">
+                      <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 评论区 -->
+              <div class="mt-12 pt-8 border-t border-gray-100">
+                <h3 class="text-xl font-bold mb-6">评论 (23)</h3>
+                
+                <div class="space-y-6 mb-10">
+                  <!-- 评论项 -->
+                  <div class="flex gap-4">
+                    <img src="https://picsum.photos/50/50?random=30" alt="评论者头像" class="w-10 h-10 rounded-full flex-shrink-0">
+                    <div class="flex-1">
+                      <div class="flex items-center justify-between mb-1">
+                        <h4 class="font-medium">张三</h4>
+                        <span class="text-sm text-gray-500">2023-05-16</span>
+                      </div>
+                      <p class="text-gray-700">非常全面的对比分析，对我选择框架很有帮助。个人感觉React的生态系统确实非常强大，但Vue的学习曲线更平缓，适合快速上手。</p>
+                      <div class="flex items-center mt-3 text-sm">
+                        <button class="text-gray-500 hover:text-primary transition-colors duration-300">
+                          <i class="fa fa-thumbs-up mr-1"></i> 12
+                        </button>
+                        <button class="ml-4 text-gray-500 hover:text-primary transition-colors duration-300">
+                          <i class="fa fa-reply mr-1"></i> 回复
+                        </button>
+                      </div>
+                      
+                      <!-- 回复 -->
+                      <div class="mt-4 ml-6 pl-4 border-l-2 border-gray-100 space-y-4">
+                        <div class="flex gap-3">
+                          <img src="https://picsum.photos/50/50?random=31" alt="回复者头像" class="w-8 h-8 rounded-full flex-shrink-0">
+                          <div>
+                            <div class="flex items-center justify-between mb-1">
+                              <h5 class="font-medium text-sm">知识探索者 <span class="text-xs text-primary bg-primary/10 px-2 py-0.5 rounded-full">作者</span></h5>
+                              <span class="text-xs text-gray-500">2023-05-17</span>
+                            </div>
+                            <p class="text-gray-700 text-sm">感谢认可！确实，每个框架都有其优势，选择时需要根据项目需求和团队情况综合考虑。</p>
+                            <div class="flex items-center mt-2 text-xs">
+                              <button class="text-gray-500 hover:text-primary transition-colors duration-300">
+                                <i class="fa fa-thumbs-up mr-1"></i> 5
+                              </button>
+                              <button class="ml-4 text-gray-500 hover:text-primary transition-colors duration-300">
+                                <i class="fa fa-reply mr-1"></i> 回复
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="flex gap-4">
+                    <img src="https://picsum.photos/50/50?random=32" alt="评论者头像" class="w-10 h-10 rounded-full flex-shrink-0">
+                    <div class="flex-1">
+                      <div class="flex items-center justify-between mb-1">
+                        <h4 class="font-medium">李四</h4>
+                        <span class="text-sm text-gray-500">2023-05-15</span>
+                      </div>
+                      <p class="text-gray-700">对于大型项目，Angular的强类型和完整架构确实能提高代码质量和可维护性，但学习成本也相对较高。希望作者能再写一篇关于这三个框架性能优化的文章。</p>
+                      <div class="flex items-center mt-3 text-sm">
+                        <button class="text-gray-500 hover:text-primary transition-colors duration-300">
+                          <i class="fa fa-thumbs-up mr-1"></i> 8
+                        </button>
+                        <button class="ml-4 text-gray-500 hover:text-primary transition-colors duration-300">
+                          <i class="fa fa-reply mr-1"></i> 回复
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 评论表单 -->
+                <div>
+                  <h4 class="text-lg font-medium mb-4">发表评论</h4>
+                  <div class="flex gap-4">
+                    <img src="https://picsum.photos/50/50?random=33" alt="当前用户头像" class="w-10 h-10 rounded-full flex-shrink-0">
+                    <div class="flex-1">
+                      <textarea class="w-full border border-gray-200 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none h-32" placeholder="分享你的看法..."></textarea>
+                      <div class="flex justify-end mt-3">
+                        <button class="btn btn-primary">提交评论</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        
+        <!-- 标签页面内容 (默认隐藏) -->
+        <div id="tag-page" class="hidden space-y-8">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 md:p-8">
+            <div class="flex items-center mb-6">
+              <a href="#" class="text-primary hover:underline mr-2">
+                <i class="fa fa-arrow-left"></i>
+              </a>
+              <h2 class="text-2xl font-bold flex items-center">
+                <i class="fa fa-tags text-secondary mr-2"></i> 标签: 前端
+              </h2>
+            </div>
+            
+            <p class="text-gray-600 mb-8">与"前端"相关的文章共有 12 篇</p>
+            
+            <div class="space-y-6">
+              <!-- 标签文章列表项 - 简化版 -->
+              <article class="article-card p-5">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span class="mr-4"><i class="fa fa-calendar-o mr-1"></i> 2023-05-15</span>
+                  <span><i class="fa fa-eye mr-1"></i> 1,245</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors duration-300">
+                  <a href="article.html">现代前端框架对比：React、Vue和Angular</a>
+                </h3>
+                <p class="text-gray-600 mb-4 line-clamp-2">本文深入对比了三大主流前端框架的优缺点、适用场景和性能表现，帮助开发者在项目选型时做出更明智的决策...</p>
+                <div class="flex flex-wrap gap-2">
+                  <a href="tag.html?tag=前端" class="tag-badge bg-primary/10 text-primary">#前端</a>
+                  <a href="tag.html?tag=React" class="tag-badge bg-gray-100 text-gray-700">#React</a>
+                  <a href="tag.html?tag=Vue" class="tag-badge bg-gray-100 text-gray-700">#Vue</a>
+                </div>
+              </article>
+              
+              <article class="article-card p-5">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span class="mr-4"><i class="fa fa-calendar-o mr-1"></i> 2023-05-08</span>
+                  <span><i class="fa fa-eye mr-1"></i> 876</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors duration-300">
+                  <a href="article.html">Web性能优化实战：从理论到实践</a>
+                </h3>
+                <p class="text-gray-600 mb-4 line-clamp-2">本文从性能指标、优化策略到具体实现方法，全面介绍了Web前端性能优化的最佳实践...</p>
+                <div class="flex flex-wrap gap-2">
+                  <a href="tag.html?tag=性能优化" class="tag-badge bg-primary/10 text-primary">#性能优化</a>
+                  <a href="tag.html?tag=Web" class="tag-badge bg-gray-100 text-gray-700">#Web</a>
+                  <a href="tag.html?tag=前端" class="tag-badge bg-gray-100 text-gray-700">#前端</a>
+                </div>
+              </article>
+              
+              <article class="article-card p-5">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span class="mr-4"><i class="fa fa-calendar-o mr-1"></i> 2023-04-20</span>
+                  <span><i class="fa fa-eye mr-1"></i> 789</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors duration-300">
+                  <a href="article.html">CSS Grid与Flexbox：现代布局方案详解</a>
+                </h3>
+                <p class="text-gray-600 mb-4 line-clamp-2">本文详细介绍了CSS Grid和Flexbox两种现代布局技术的原理、用法和适用场景，并通过实例演示如何结合使用它们来创建复杂的响应式布局...</p>
+                <div class="flex flex-wrap gap-2">
+                  <a href="tag.html?tag=CSS" class="tag-badge bg-primary/10 text-primary">#CSS</a>
+                  <a href="tag.html?tag=Grid" class="tag-badge bg-gray-100 text-gray-700">#Grid</a>
+                  <a href="tag.html?tag=前端" class="tag-badge bg-gray-100 text-gray-700">#前端</a>
+                </div>
+              </article>
+              
+              <article class="article-card p-5">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span class="mr-4"><i class="fa fa-calendar-o mr-1"></i> 2023-04-15</span>
+                  <span><i class="fa fa-eye mr-1"></i> 654</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 hover:text-primary transition-colors duration-300">
+                  <a href="article.html">JavaScript异步编程：从回调地狱到Async/Await</a>
+                </h3>
+                <p class="text-gray-600 mb-4 line-clamp-2">本文回顾了JavaScript异步编程的发展历程，从最初的回调函数，到Promise，再到现在的Async/Await，详细解析了各种异步编程模式的优缺点和使用场景...</p>
+                <div class="flex flex-wrap gap-2">
+                  <a href="tag.html?tag=JavaScript" class="tag-badge bg-primary/10 text-primary">#JavaScript</a>
+                  <a href="tag.html?tag=异步编程" class="tag-badge bg-gray-100 text-gray-700">#异步编程</a>
+                  <a href="tag.html?tag=前端" class="tag-badge bg-gray-100 text-gray-700">#前端</a>
+                </div>
+              </article>
+            </div>
+            
+            <!-- 分页控件 -->
+            <div class="mt-8 flex justify-center">
+              <nav class="inline-flex rounded-md shadow-sm">
+                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                  <span class="sr-only">上一页</span>
+                  <i class="fa fa-chevron-left"></i>
+                </a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-primary text-sm font-medium text-white">
+                  1
+                </a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                  2
+                </a>
+                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                  <span class="sr-only">下一页</span>
+                  <i class="fa fa-chevron-right"></i>
+                </a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- 右侧边栏 - 全站通用 -->
+    <aside class="w-72 bg-white shadow-md border-l border-gray-200 flex-shrink-0 hidden lg:block transition-all duration-300">
+      <div class="p-6 border-b border-gray-100">
+        <h3 class="text-lg font-bold mb-4 flex items-center">
+          <i class="fa fa-search text-primary mr-2"></i> 搜索
+        </h3>
+        <div class="relative">
+          <input type="text" placeholder="搜索文章..." class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20">
+          <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="p-6 border-b border-gray-100">
+        <h3 class="text-lg font-bold mb-4 flex items-center">
+          <i class="fa fa-tags text-primary mr-2"></i> 标签云
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          <a href="tag.html?tag=前端" class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm hover:bg-primary/20 transition-all duration-300">#前端</a>
+          <a href="tag.html?tag=React" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary/20 hover:text-primary transition-all duration-300">#React</a>
+          <a href="tag.html?tag=Vue" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary/20 hover:text-primary transition-all duration-300">#Vue</a>
+          <a href="tag.html?tag=JavaScript" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary/20 hover:text-primary transition-all duration-300">#JavaScript</a>
+          <a href="tag.html?tag=TypeScript" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary/20 hover:text-primary transition-all duration-300">#TypeScript</a>
+          <a href="tag.html?tag=性能优化" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary/20 hover:text-primary transition-all duration-300">#性能优化</a>
+          <a href="tag.html?tag=Web" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary/20 hover:text-primary transition-all duration-300">#Web</a>
+          <a href="tag.html?tag=CSS" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary/20 hover:text-primary transition-all duration-300">#CSS</a>
+          <a href="tag.html?tag=架构" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary/20 hover:text-primary transition-all duration-300">#架构</a>
+          <a href="tag.html?tag=微前端" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary/20 hover:text-primary transition-all duration-300">#微前端</a>
+          <a href="tag.html?tag=学习方法" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary/20 hover:text-primary transition-all duration-300">#学习方法</a>
+          <a href="tag.html?tag=职业发展" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary/20 hover:text-primary transition-all duration-300">#职业发展</a>
+        </div>
+      </div>
+      
+      <div class="p-6 border-b border-gray-100">
+        <h3 class="text-lg font-bold mb-4 flex items-center">
+          <i class="fa fa-fire text-primary mr-2"></i> 热门文章
+        </h3>
+        <div class="space-y-4">
+          <a href="article.html" class="flex gap-3 group">
+            <img src="https://picsum.photos/100/100?random=40" alt="文章缩略图" class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+            <div>
+              <h4 class="font-medium line-clamp-2 group-hover:text-primary transition-colors duration-300">现代前端框架对比：React、Vue和Angular</h4>
+              <p class="text-sm text-gray-500 mt-1">2023-05-15</p>
+            </div>
+          </a>
+          
+          <a href="article.html" class="flex gap-3 group">
+            <img src="https://picsum.photos/100/100?random=41" alt="文章缩略图" class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+            <div>
+              <h4 class="font-medium line-clamp-2 group-hover:text-primary transition-colors duration-300">Web性能优化实战：从理论到实践</h4>
+              <p class="text-sm text-gray-500 mt-1">2023-05-08</p>
+            </div>
+          </a>
+          
+          <a href="article.html" class="flex gap-3 group">
+            <img src="https://picsum.photos/100/100?random=42" alt="文章缩略图" class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+            <div>
+              <h4 class="font-medium line-clamp-2 group-hover:text-primary transition-colors duration-300">JavaScript异步编程：从回调地狱到Async/Await</h4>
+              <p class="text-sm text-gray-500 mt-1">2023-04-15</p>
+            </div>
+          </a>
+          
+          <a href="article.html" class="flex gap-3 group">
+            <img src="https://picsum.photos/100/100?random=43" alt="文章缩略图" class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+            <div>
+              <h4 class="font-medium line-clamp-2 group-hover:text-primary transition-colors duration-300">TypeScript高级类型与实用技巧</h4>
+              <p class="text-sm text-gray-500 mt-1">2023-05-01</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="p-6 border-b border-gray-100">
+        <h3 class="text-lg font-bold mb-4 flex items-center">
+          <i class="fa fa-calendar text-primary mr-2"></i> 文章归档
+        </h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-gray-50 transition-all duration-300">
+              <span>2023年5月</span>
+              <span class="text-sm text-gray-500">8篇</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-gray-50 transition-all duration-300">
+              <span>2023年4月</span>
+              <span class="text-sm text-gray-500">12篇</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-gray-50 transition-all duration-300">
+              <span>2023年3月</span>
+              <span class="text-sm text-gray-500">15篇</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-gray-50 transition-all duration-300">
+              <span>2023年2月</span>
+              <span class="text-sm text-gray-500">10篇</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex justify-between items-center px-3 py-2 rounded-lg hover:bg-gray-50 transition-all duration-300">
+              <span>2023年1月</span>
+              <span class="text-sm text-gray-500">7篇</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="p-6">
+        <h3 class="text-lg font-bold mb-4 flex items-center">
+          <i class="fa fa-envelope text-primary mr-2"></i> 订阅更新
+        </h3>
+        <p class="text-gray-600 mb-4">订阅我的博客，获取最新文章和通知</p>
+        <form>
+          <input type="email" placeholder="输入你的邮箱地址" class="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 mb-3">
+          <button type="submit" class="btn btn-primary w-full">订阅</button>
+        </form>
+      </div>
+    </aside>
+  </div>
+  
+  <!-- 页脚 -->
+  <footer class="bg-white border-t border-gray-200 py-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <h2 class="text-xl font-bold text-gray-900">知识探索</h2>
+          <p class="text-gray-600 mt-2">分享技术、思考与创意的个人博客</p>
+        </div>
+        
+        <div class="flex gap-6 mb-6 md:mb-0">
+          <a href="#" class="text-gray-600 hover:text-primary transition-colors duration-300">
+            <i class="fa fa-home mr-1"></i> 首页
+          </a>
+          <a href="#" class="text-gray-600 hover:text-primary transition-colors duration-300">
+            <i class="fa fa-folder-o mr-1"></i> 分类
+          </a>
+          <a href="#" class="text-gray-600 hover:text-primary transition-colors duration-300">
+            <i class="fa fa-tags mr-1"></i> 标签
+          </a>
+          <a href="#" class="text-gray-600 hover:text-primary transition-colors duration-300">
+            <i class="fa fa-calendar-o mr-1"></i> 归档
+          </a>
+          <a href="#" class="text-gray-600 hover:text-primary transition-colors duration-300">
+            <i class="fa fa-user-o mr-1"></i> 关于
+          </a>
+        </div>
+        
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-all duration-300">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="mt-8 pt-6 border-t border-gray-100 text-center text-gray-500 text-sm">
+        <p>&copy; 2023 知识探索 | 个人博客. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- 返回顶部按钮 -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary rounded-full shadow-lg flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+  
+  <!-- JavaScript -->
+  <script>
+    // 移动端菜单切换
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileSidebar = document.getElementById('mobile-sidebar');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      if (mobileSidebar.classList.contains('translate-x-full')) {
+        mobileSidebar.classList.remove('translate-x-full');
+        mobileSidebar.classList.add('translate-x-0');
+        mobileMenuButton.innerHTML = '<i class="fa fa-times"></i>';
+      } else {
+        mobileSidebar.classList.remove('translate-x-0');
+        mobileSidebar.classList.add('translate-x-full');
+        mobileMenuButton.innerHTML = '<i class="fa fa-bars"></i>';
+      }
+    });
+    
+    // 点击移动菜单外部区域关闭菜单
+    mobileSidebar.addEventListener('click', (e) => {
+      if (e.target === mobileSidebar) {
+        mobileSidebar.classList.remove('translate-x-0');
+        mobileSidebar.classList.add('translate-x-full');
+        mobileMenuButton.innerHTML = '<i class="fa fa-bars"></i>';
+      }
+    });
+    
+    // 页面导航
+    const navigateToPage = (pageId) => {
+      // 隐藏所有页面
+      document.getElementById('home-page').classList.add('hidden');
+      document.getElementById('category-page').classList.add('hidden');
+      document.getElementById('article-page').classList.add('hidden');
+      document.getElementById('tag-page').classList.add('hidden');
+      
+      // 显示目标页面
+      document.getElementById(pageId).classList.remove('hidden');
+      
+      // 关闭移动菜单（如果打开）
+      if (!mobileSidebar.classList.contains('translate-x-full')) {
+        mobileSidebar.classList.remove('translate-x-0');
+        mobileSidebar.classList.add('translate-x-full');
+        mobileMenuButton.innerHTML = '<i class="fa fa-bars"></i>';
+      }
+    };
+    
+    // 导航链接点击事件
+    document.querySelectorAll('a[href="index.html"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateToPage('home-page');
+      });
+    });
+    
+    document.querySelectorAll('a[href="category.html"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateToPage('category-page');
+      });
+    });
+    
+    document.querySelectorAll('a[href="article.html"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateToPage('article-page');
+      });
+    });
+    
+    document.querySelectorAll('a[href^="tag.html"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateToPage('tag-page');
+      });
+    });
+    
+    // 返回顶部按钮
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.remove('opacity-100', 'visible');
+        backToTopButton.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', () => {
+      // 默认显示首页
+      navigateToPage('home-page');
+      
+      // 添加平滑滚动
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>    
